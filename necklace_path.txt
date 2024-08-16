@@ -1,0 +1,1 @@
+static/necklace_images/necklace_b1.png

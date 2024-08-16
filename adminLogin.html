@@ -1,0 +1,200 @@
+<!-- adminLogin.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <style>
+        /* Fonts from Google Font */
+@import url('https://fonts.googleapis.com/css?family=Abel|Playfair+Display');
+
+/* Global rules */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Body rules */
+body {
+    background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
+    background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    font-family: 'Abel', sans-serif;
+    opacity: 0.95;
+}
+
+/* Form attributes */
+form {
+    width: 300px;
+    min-height: 100px;
+    height: auto;
+    border-radius: 5px;
+    margin: 2% auto;
+    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
+    padding: 2%;
+    background-image: linear-gradient(-225deg, #E3FDF5 50%, #FFE6FA 50%);
+}
+
+h2 {
+    text-align: center; /* Center the headings */
+    font-size: 50px;
+}
+
+/* Form container */
+form .con {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+/* Form header */
+header {
+    margin: 2% auto 10% auto;
+    text-align: center;
+}
+
+/* Login title */
+header h2 {
+    font-size: 250%;
+    font-family: 'Playfair Display', serif;
+    color: #3e403f;
+}
+
+/* Form input items */
+.input-item {
+    background: #fff;
+    color: #333;
+    padding: 14.5px 0px 15px 9px;
+    border-radius: 5px 0px 0px 5px;
+}
+
+/* Show/hide password font icon */
+#eye {
+    background: #fff;
+    color: #333;
+    margin: 5.9px 0 0 0;
+    margin-left: -20px;
+    padding: 15px 9px 19px 0px;
+    border-radius: 0px 5px 5px 0px;
+    float: right;
+    position: relative;
+    right: 1%;
+    top: -.2%;
+    z-index: 5;
+    cursor: pointer;
+}
+
+/* Form inputs */
+input[class="form-input"] {
+    width: 240px;
+    height: 50px;
+    margin-top: 2%;
+    padding: 15px;
+    font-size: 16px;
+    font-family: 'Abel', sans-serif;
+    color: #5E6472;
+    outline: none;
+    border: none;
+    border-radius: 0px 5px 5px 0px;
+    transition: 0.2s linear;
+}
+
+input[id="txt-input"] {
+    width: 250px;
+}
+
+/* Focus */
+input:focus {
+    transform: translateX(-2px);
+    border-radius: 5px;
+}
+
+/* Buttons */
+.button {
+    display: inline-block;
+    color: #252537;
+    width: 100px;
+    height: 50px;
+    padding: 0 20px;
+    background: #B8F2E6;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s linear;
+    margin: 7% auto;
+    letter-spacing: 0.05em;
+    margin-left: 25%;
+}
+
+/* Forgot password button */
+.frgt-pass {
+    background: transparent;
+}
+
+/* Sign Up button */
+.sign-up {
+    background: #B8F2E6;
+    width: 135px;
+    padding: 2px;
+}
+
+/* Log button */
+.log {
+    background: #B8F2E6;
+    width: 70px;
+    padding: 2px;
+}
+
+/* Button hover */
+.button:hover {
+    background-color: red;
+    transform: translatey(3px);
+    box-shadow: none;
+}
+
+
+@keyframes ani9 {
+    0% {
+        transform: translateY(3px);
+    }
+    100% {
+        transform: translateY(5px);
+    }
+}
+
+    </style>
+</head>
+<body>
+    <h2>Admin Login</h2>
+    <form action="{{ url_for('admin_login') }}" method="POST">
+        <label for="admin_username">Username:</label>
+        <input type="email" id="admin_username" name="username" required><br><br>
+        
+        <label for="admin_password">Password:</label>
+        <input type="password" id="admin_password" name="password" required><br><br>
+        
+        <input class="button" type="submit" value="Login">
+    </form>
+    
+    <h2>Admin Registration</h2>
+    <form action="{{ url_for('admin_register') }}" method="POST">
+        <label for="admin_reg_username">Username:</label>
+        <input type="text" id="admin_reg_username" name="username" required><br><br>
+        
+        <label for="admin_reg_password">Password:</label>
+        <input type="password" id="admin_reg_password" name="password" required><br><br>
+        
+        <input class="button" type="submit" value="Register">
+        <br>
+        <br>
+        <a style="text-decoration: none;" href="{{ url_for('login') }}">User Login!</a>
+    </form>
+</body>
+</html>

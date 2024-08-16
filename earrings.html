@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shirt Products</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-...." crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="static/style.css">
+    <script src="static/script2.js" defer></script>
+</head>
+<body>
+    <section id="header">
+        <a href="#"><img src="static/webPage/Logo.png" class="logo" alt="" width="190" height="100"></a>
+
+        <div>
+            <ul id="navbar">
+<!-- ---------------------------- Home----------------------------------------------------------------------------->
+                <li><a href="index.html">Home</a></li>
+<!-- ---------------------------Shirts----------------------------------------------------------------------------->
+                <li><a href="shirts.html">Shirts</a></li>
+<!------------------------------Glasses---------------------------------------------------------------------------->
+                <li><a href="glass.html">Glasses</a></li>
+<!-- ---------------------------Necklace--------------------------------------------------------------------------->
+                <li><a href="necklaces.html">Necklace</a></li>
+<!------------------------------Earrings--------------------------------------------------------------------------->
+               <li><a class="active" href="earrings.html">Earrings</a></li>
+<!-----------------------------Contact----------------------------------------------------------------------------->
+                <li><a href="#foot">Contact</a></li>
+<!-----------------------------Cart--------------------------------------------------------------------------------->
+                <li><a href="cart.html"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+<!----------------------------Logout -------------------------------------------------------------------------------->
+                <li><a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i></a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="page-header">
+        <h2>#stayhome</h2> 
+        <p>Save more with the coupons & upto 70% off!!</p>
+    </section>
+    
+    <section id="product1" class="section-p1">
+        <div class="pro-container">
+            {% for product in products %}
+            <div class="ear" data-name="{{ product[6] }}">
+                <img src="{{ product[1] }}" alt="" height="500px">
+                <div class="des">
+                    <span>{{ product[5] }}</span>
+                    <h5>{{ product[2] }}</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>₹ {{ product[3] }}</h4>
+                </div>
+                <!-- <button class="add-to-cart" onclick="addToCart('{{ product[2] }}', '{{ product[3] }}', '{{ product[1] }}')">Add To Cart</button> -->
+                <a class="add-to-cart" onclick="addToCart('{{ product[2] }}', '{{ product[3] }}', '{{ product[1] }}')"><i class="fal fa-shopping-cart cart"></i></a>
+                <!-- <button class="try-product" onclick="tryProduct('{{ product[6] }}')">TRY PRODUCT</button> -->
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <div class="products-preview">
+
+        <div class="preview" data-target="p-34">
+           <i class="fas fa-times"></i>
+           <img src="static/earring_images/earrings_1.png" alt="" class="ear">
+           <h3>Earrings 1</h3>
+           <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+              <span>( 250 )</span>
+           </div>
+           <p>Timeless elegance for today‘s woman.
+            The perfect finishing touch.</p>
+           <div class="price">₹100.0</div>
+           <div class="buttons">
+            <button class="add-to-cart cart" onclick="addToCart('{{ products[0][2] }}', '{{ products[0][3] }}', '{{ products[0][1] }}')">Add to cart</button>
+              <!-- <a href="cart.html" class="cart">Add To Cart</a> -->
+              <form action="{{ url_for('try_earring_image', image_name='earrings_1.png') }}" method="get">
+                 <button class="try">Try The Product</button>
+              </form>
+           </div>
+        </div>
+        
+ 
+        <div class="preview" data-target="p-35">
+         <i class="fas fa-times"></i>
+         <img src="static/earring_images/earrings_2.png" alt="" class="ear">
+         <h3>Earrings 2</h3>
+         <div class="stars">
+             <i class="fas fa-star"></i>
+             <i class="fas fa-star"></i>
+             <i class="fas fa-star"></i>
+             <i class="fas fa-star"></i>
+             <i class="fas fa-star-half-alt"></i>
+             <span>( 250 )</span>
+         </div>
+         <p> Your one–stop shop for all things sparkly!
+            The most special jewelry for the most special moments.</p>
+         <div class="price">₹100.0</div>
+         <div class="buttons">
+            <button class="add-to-cart cart" onclick="addToCart('{{ products[0][2] }}', '{{ products[0][3] }}', '{{ products[0][1] }}')">Add to cart</button>
+              <!-- <a href="cart.html" class="cart">Add To Cart</a> -->
+              <form action="{{ url_for('try_earring_image', image_name='earrings_2.png') }}" method="get">
+                 <button class="try">Try The Product</button>
+              </form>
+           </div>
+     </div>
+     
+ 
+        <div class="preview" data-target="p-36">
+           <i class="fas fa-times"></i>
+           <img src="static/earring_images/earrings_3.png" alt="" class="ear">
+           <h3>Earrings 3</h3>
+           <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+              <span>( 250 )</span>
+           </div>
+           <p>For the woman who loves to shine.
+            The perfect place to find that special something.</p>
+           <div class="price">₹100.0</div>
+           <div class="buttons">
+            <button class="add-to-cart cart" onclick="addToCart('{{ products[0][2] }}', '{{ products[0][3] }}', '{{ products[0][1] }}')">Add to cart</button>
+              <!-- <a href="cart.html" class="cart">Add To Cart</a> -->
+              <form action="{{ url_for('try_earring_image', image_name='earrings_3.png') }}" method="get">
+                 <button class="try">Try The Product</button>
+              </form>
+           </div>
+        </div>
+ 
+        <div class="preview" data-target="p-37">
+           <i class="fas fa-times"></i>
+           <img src="static/earring_images/earrings_4.png" alt="" class="ear">
+           <h3>Earrings 4</h3>
+           <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+              <span>( 250 )</span>
+           </div>
+           <p>The sparkle you‘re looking for.
+            Jewellery to make you shine.</p>
+           <div class="price">₹100.0</div>
+           <div class="buttons">
+            <button class="add-to-cart cart" onclick="addToCart('{{ products[0][2] }}', '{{ products[0][3] }}', '{{ products[0][1] }}')">Add to cart</button>
+               <form action="{{ url_for('try_earring_image', image_name='earrings_4.png') }}" method="get">
+                   <button class="try">Try The Product</button>
+               </form>
+           </div>
+        </div>
+ 
+        <div class="preview" data-target="p-38">
+           <i class="fas fa-times"></i>
+           <img src="static/earring_images/earrings_5.png" alt="" class="ear">
+           <h3>Earrings 5</h3>
+           <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+              <span>( 250 )</span>
+           </div>
+           <p>Find your perfect piece.
+            The finishing touch to your outfit.</p>
+           <div class="price">₹100.0</div>
+           <div class="buttons">
+            <button class="add-to-cart cart" onclick="addToCart('{{ products[0][2] }}', '{{ products[0][3] }}', '{{ products[0][1] }}')">Add to cart</button>
+               <form action="{{ url_for('try_earring_image', image_name='earrings_5.png') }}" method="get">
+                   <button class="try">Try The Product</button>
+               </form>
+           </div>
+        </div>
+ 
+        <div class="preview" data-target="p-39">
+           <i class="fas fa-times"></i>
+           <img src="static/earring_images/earrings_6.png" alt="" class="ear">
+           <h3>Earrings 6</h3>
+           <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+              <span>( 250 )</span>
+           </div>
+           <p>Find your perfect accessory at our jewelry store!
+            From statement pieces to delicate details, we have the jewelry you need.</p>
+           <div class="price">₹100.0</div>
+           <div class="buttons">
+            <button class="add-to-cart cart" onclick="addToCart('{{ products[0][2] }}', '{{ products[0][3] }}', '{{ products[0][1] }}')">Add to cart</button>
+               <form action="{{ url_for('try_earring_image', image_name='earrings_6.png') }}" method="get">
+                   <button class="try">Try The Product</button>
+               </form>
+           </div>
+        </div>
+ 
+         <div class="preview" data-target="p-40">
+           <i class="fas fa-times"></i>
+           <img src="static/earring_images/earrings_7.png" alt="" class="ear">
+           <h3>Earrings 7</h3>
+           <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+              <span>( 250 )</span>
+           </div>
+           <p>Jewelry for every occasion!
+            Fine jewellery for discerning taste. </p>
+           <div class="price">₹100.0</div>
+           <div class="buttons">
+            <button class="add-to-cart cart" onclick="addToCart('{{ products[0][2] }}', '{{ products[0][3] }}', '{{ products[0][1] }}')">Add to cart</button>
+               <form action="{{ url_for('try_earring_image', image_name='earrings_7.png') }}" method="get">
+                   <button class="try">Try The Product</button>
+               </form>
+           </div>
+        </div>
+ 
+         <div class="preview" data-target="p-41">
+           <i class="fas fa-times"></i>
+           <img src="static/earring_images/earrings_8.png" alt="" class="ear" class="ear">
+           <h3>Earrings 8</h3>
+           <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+              <span>( 250 )</span>
+           </div>
+           <p>Luxurious and exquisite jewellery.
+            Timeless elegance and style.</p>
+           <div class="price">₹100.0</div>
+           <div class="buttons">
+            <button class="add-to-cart cart" onclick="addToCart('{{ products[0][2] }}', '{{ products[0][3] }}', '{{ products[0][1] }}')">Add to cart</button>
+               <form action="{{ url_for('try_earring_image', image_name='earrings_8.png') }}" method="get">
+                   <button class="try">Try The Product</button>
+               </form>
+           </div>
+        </div>
+ 
+         <div class="preview" data-target="p-42" >
+           <i class="fas fa-times"></i>
+           <img src="static/earring_images/earrings_9.png" alt="" class="ear">
+           <h3>Earrings 9</h3>
+           <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+              <span>( 250 )</span>
+           </div>
+           <p>Jewellery that sparkles and shines.
+            The perfect finishing touch to any outfit</p>
+           <div class="price">₹100.0</div>
+           <div class="buttons">
+            <button class="add-to-cart cart" onclick="addToCart('{{ products[0][2] }}', '{{ products[0][3] }}', '{{ products[0][1] }}')">Add to cart</button>
+               <form action="{{ url_for('try_earring_image', image_name='earrings_9.png') }}" method="get">
+                   <button class="try">Try The Product</button>
+               </form>
+           </div>
+        </div>
+
+        <div class="preview" data-target="p-43">
+            <i class="fas fa-times"></i>
+            <img src="static/earring_images/earrings_10.png" alt="" class="ear">
+            <h3>Earrings 10</h3>
+            <div class="stars">
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star-half-alt"></i>
+               <span>( 250 )</span>
+            </div>
+            <p>Something special for everyone.
+                The perfect gift for any occasion.</p>
+            <div class="price">₹100.0</div>
+            <div class="buttons">
+             <button class="add-to-cart cart" onclick="addToCart('{{ products[0][2] }}', '{{ products[0][3] }}', '{{ products[0][1] }}')">Add to cart</button>
+                <form action="{{ url_for('try_earring_image', image_name='earrings_10.png') }}" method="get">
+                    <button class="try">Try The Product</button>
+                </form>
+            </div>
+         </div>
+
+         <div class="preview" data-target="p-44">
+            <i class="fas fa-times"></i>
+            <img src="static/earring_images/earrings_11.png" alt="" class="ear">
+            <h3>Earrings 11</h3>
+            <div class="stars">
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star-half-alt"></i>
+               <span>( 250 )</span>
+            </div>
+            <p>Handcrafted with love.
+                The personal touch for finding the perfect gift.</p>
+            <div class="price">₹100.0</div>
+            <div class="buttons">
+             <button class="add-to-cart cart" onclick="addToCart('{{ products[0][2] }}', '{{ products[0][3] }}', '{{ products[0][1] }}')">Add to cart</button>
+                <form action="{{ url_for('try_earring_image', image_name='earrings_11.png') }}" method="get">
+                    <button class="try">Try The Product</button>
+                </form>
+            </div>
+         </div>
+        
+         <div class="preview" data-target="p-45">
+            <i class="fas fa-times"></i>
+            <img src="static/earring_images/earrings_12.png" alt="" class="ear">
+            <h3>Earrings 12</h3>
+            <div class="stars">
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star-half-alt"></i>
+               <span>( 250 )</span>
+            </div>
+            <p>Luxury jewelry at its finest.
+                From classic to contemporary, we have it all.</p>
+            <div class="price">₹100.0</div>
+            <div class="buttons">
+             <button class="add-to-cart cart" onclick="addToCart('{{ products[0][2] }}', '{{ products[0][3] }}', '{{ products[0][1] }}')">Add to cart</button>
+                <form action="{{ url_for('try_earring_image', image_name='earrings_12.png') }}" method="get">
+                    <button class="try">Try The Product</button>
+                </form>
+            </div>
+         </div>
+ 
+
+ 
+     </div>
+
+    <section id="newsletter" class="section-p1 section-m1">
+        <div class="newtext">
+            <h4>Sign Up For Newsletters</h4>
+            <p>Get E-mail Updates about or latest shop and <span>special offers.</span></p>
+        </div>
+        <div class="form">
+            <input type="email" placeholder="Your email address">
+            <button class="normal">Sign Up</button>
+        </div>
+    </section>
+
+    <footer class="section-p1" id="foot">
+        <div class="col">
+            <img class="logo" src="static/webPage/Logo.png" alt="" width="190" height="100">
+            <h4>Contact</h4>
+            <p><strong>Address: </strong>SKNCOE,Vadgaon,Pune-411052</p>
+            <p><strong>Phone: </strong>+91 0123456789</p>
+            <p><strong>Hours: </strong>10.00 - 10.00, Mon - Sat</p>
+            <div class="follow">
+                <h4>Follow US</h4>
+                <div class="icon">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-pinteresr-p"></i>
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <h4>About</h4>
+            <a href="#">About us</a>
+            <a href="#">Delivery Information</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Contact us</a>
+        </div>
+
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="#">Sign In</a>
+            <a href="#">View Cart</a>
+            <a href="#">My Whislist</a>
+            <a href="#">Track My Order</a>
+            <a href="#">Help</a>
+        </div>
+
+        <div class="col install">
+            <h4>Install App</h4>
+            <p>From App Store or Google Store</p>
+            <div class="row">
+                <img src="static/webPage/app.jpg" alt="">
+                <img src="static/webPage/play.jpg" alt="">
+            </div>
+            <p>Secured Payment Gateways</p>
+            <img src="static/webPage/pay.png" alt="">
+        </div>
+
+        <div class="copyright">
+            <p>@ 2023, MARS etc - Eccomerce Webiste</p>
+        </div>
+    </footer>
+
+    <!-- <script>
+        function tryProduct(tryImagePath) {
+            $.ajax({
+                type: "POST",
+                url: "/try_shirt",
+                data: JSON.stringify({ tryImagePath: tryImagePath }),
+                contentType: "application/json",
+                success: function(response) {
+                    console.log(response);
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        }
+    </script> -->
+    
+    
+
+    <script>
+        function addToCart(productName, productPrice, productImage) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/add_to_cart", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        console.log("Product added to cart:", productName);
+                        // Optionally, you can redirect to the cart page after adding to cart
+                        alert("Product added to cart.");
+                    } else {
+                        console.error("Failed to add product to cart:", xhr.status);
+                        alert("Failed to add product to cart. Please try again.");
+                    }
+                }
+            };
+            var data = JSON.stringify({ name: productName, price: productPrice, image: productImage });
+            xhr.send(data);
+        }
+
+        function logout() {
+            fetch('/logout', { method: 'GET' })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = '/login';  // Redirect to the login page
+                    } else {
+                        console.error('Failed to logout');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>

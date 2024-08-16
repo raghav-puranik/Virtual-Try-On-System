@@ -1,0 +1,306 @@
+<!-- admin_dashboard.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="static/style.css">
+</head>
+<body>
+    <div>
+        <ul id="navbar">
+            <!----------------------------Logout -------------------------------------------------------------------------------->
+            <li><a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i></a></li>
+        </ul>
+    </div>
+    
+
+<h1 style="text-align: center;"><b>Welcome </b> <span style="color: red;">Admin!</span></h1>
+<div class="container mt-5">
+    <h1 class="mb-4">Add Product</h1>
+
+    <!-- Add product form -->
+    <form id="addProductForm" method="POST" action="/add_product">
+        <div class="form-group">
+            <label for="tableName">Table Name</label>
+            <select class="form-control" id="tableName" name="tableName" required>
+                <option value="products">Products</option>
+                <option value="glass_products">Glass Products</option>
+                <option value="necklace_products">Necklace Products</option>
+                <option value="earrings_products">Earrings Products</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="image">Image URL</label>
+            <input type="text" class="form-control" id="image" name="image" required>
+        </div>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input type="number" class="form-control" id="price" name="price" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" name="description"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="brand">Brand</label>
+            <input type="text" class="form-control" id="brand" name="brand" required>
+        </div>
+        <div class="form-group">
+            <label for="tryImage">Try Image Id</label>
+            <input type="text" class="form-control" id="tryImage" name="tryImage" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Product</button>
+    </form>
+
+    <hr>
+    <hr>
+
+    <h1 class="mb-4">Delete Product</h1>
+
+<!-- Delete product form -->
+<form id="deleteProductForm" method="POST" action="/delete_product">
+    <div class="form-group">
+        <label for="deleteTableName">Table Name</label>
+        <select class="form-control" id="deleteTableName" name="deleteTableName" required>
+            <option value="products">Products</option>
+            <option value="glass_products">Glass Products</option>
+            <option value="necklace_products">Necklace Products</option>
+            <option value="earrings_products">Earrings Products</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="tryImageToDelete">Try Image Id</label>
+        <input type="text" class="form-control" id="tryImageToDelete" name="tryImageToDelete" required>
+    </div>
+    <button type="submit" class="btn btn-danger">Delete Product</button>
+</form>
+
+<hr>
+<hr>
+
+    <h1 class="mb-4">Products Table</h1>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Image</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Description</th>
+                <th scope="col">Brand</th>
+                <th scope="col">Try Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <th scope="row">{{ product[0] }}</th>
+                <td><img src="{{ product[1] }}" alt="{{ product[2] }}" style="max-width: 100px;"></td>
+                <td>{{ product[2] }}</td>
+                <td>{{ product[3] }}</td>
+                <td>{{ product[4] }}</td>
+                <td>{{ product[5] }}</td>
+                <td>{{ product[6] }}</td>
+                <!-- <td> -->
+                    <!-- Button to remove product -->
+                    <!-- <button class="btn btn-danger" onclick="removeProduct('{{ product[6] }}')">Remove</button>
+                </td> -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <hr>
+    <hr>
+
+    <h1 class="mb-4">Glass Products Table</h1>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Image</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Description</th>
+                <th scope="col">Brand</th>
+                <th scope="col">Try Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in glass_products %}
+            <tr>
+                <th scope="row">{{ product[0] }}</th>
+                <td><img src="{{ product[1] }}" alt="{{ product[2] }}" style="max-width: 100px;"></td>
+                <td>{{ product[2] }}</td>
+                <td>{{ product[3] }}</td>
+                <td>{{ product[4] }}</td>
+                <td>{{ product[5] }}</td>
+                <td>{{ product[6] }}</td>
+                <!-- <td> -->
+                    <!-- Button to remove product -->
+                    <!-- <button class="btn btn-danger" onclick="removeProduct('{{ product[6] }}')">Remove</button>
+                </td> -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <hr>
+    <hr>
+
+    <h1 class="mb-4">Earrings Products Table</h1>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Image</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Description</th>
+                <th scope="col">Brand</th>
+                <th scope="col">Try Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in earrings_products %}
+            <tr>
+                <th scope="row">{{ product[0] }}</th>
+                <td><img src="{{ product[1] }}" alt="{{ product[2] }}" style="max-width: 100px;"></td>
+                <td>{{ product[2] }}</td>
+                <td>{{ product[3] }}</td>
+                <td>{{ product[4] }}</td>
+                <td>{{ product[5] }}</td>
+                <td>{{ product[6] }}</td>
+                <!-- <td> -->
+                    <!-- Button to remove product -->
+                    <!-- <button class="btn btn-danger" onclick="removeProduct('{{ product[6] }}')">Remove</button>
+                </td> -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <hr>
+    <hr>
+
+    <h1 class="mb-4">Necklace Products Table</h1>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Image</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Description</th>
+                <th scope="col">Brand</th>
+                <th scope="col">Try Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in neacklace_products %}
+            <tr>
+                <th scope="row">{{ product[0] }}</th>
+                <td><img src="{{ product[1] }}" alt="{{ product[2] }}" style="max-width: 100px;"></td>
+                <td>{{ product[2] }}</td>
+                <td>{{ product[3] }}</td>
+                <td>{{ product[4] }}</td>
+                <td>{{ product[5] }}</td>
+                <td>{{ product[6] }}</td>
+                <!-- <td> -->
+                    <!-- Button to remove product -->
+                    <!-- <button class="btn btn-danger" onclick="removeProduct('{{ product[6] }}')">Remove</button>
+                </td> -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <hr>
+    <hr>
+
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Font Awesome JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+
+<!-- <script>
+    function removeProduct(tryImage) {
+        // Send AJAX request to remove the product
+        fetch('/remove_product', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ tryImage: tryImage })
+        })
+        .then(response => {
+            if (response.ok) {
+                // Reload the page after successful removal
+                location.reload();
+            } else {
+                alert('Failed to remove product');
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+</script> -->
+
+<!-- <script>
+    document.getElementById('removeProductForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the form from submitting normally
+
+        // Collect form data
+        const formData = new FormData(this);
+
+        // Send a POST request to the server
+        fetch('/remove_product', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Handle the response from the server
+            if (data.message) {
+                alert(data.message); // Display success message
+            } else if (data.error) {
+                alert(data.error); // Display error message
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again.'); // Display error message
+        });
+    });
+</script> -->
+
+<script>
+    function logout() {
+            fetch('/logout', { method: 'GET' })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = '/login';  // Redirect to the login page
+                    } else {
+                        console.error('Failed to logout');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <link rel="stylesheet" type="text/css" href="static/style1.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-...." crossorigin="anonymous" />
+
+    <script src="static/script1.js" defer></script>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    <div class="overlay"></div>
+    <form action="{{ url_for('register') }}" method="POST">
+        <div class="con">
+            <header class="head-form">
+            <h2>Register</h2>
+                    <!--     A welcome message or an explanation of the login form -->
+            <p>Register By Filling The Below Details</p>
+        </header>
+        <br>
+        <div class="field-set">
+            <span class="input-item">
+                <i class="fa fa-user-circle"></i>
+              </span>
+              <input class="form-input" id="txt-input" type="text" name="username" placeholder="Username" required>
+                      <br>
+
+              <span class="input-item">
+                <i class="fas fa-user-circle"></i>
+            </span>
+            
+            <input class="form-input" id="txt-input" type="text" name="name" placeholder="Name" required>
+            <br>
+            
+            <span class="input-item">
+                <i class="fas fa-phone"></i>
+            </span>
+            <input class="form-input" id="txt-input" type="text" name="phone_number" placeholder="Phone Number" required>
+            <br>
+            
+            <span class="input-item">
+                <i class="fas fa-envelope"></i>
+            </span>
+            <input class="form-input" id="txt-input" type="email" name="email" placeholder="Email" required>
+            <br>
+            
+              <span class="input-item">
+                <i class="fa fa-key"></i>
+               </span>
+               <input class="form-input" id="pwd"  type="password" name="password" placeholder="Password" required>
+                <button class="log-in" type="submit">Register</button>
+            
+        </div>
+        <div class="other">
+            <!--      Forgot Password button-->
+                  
+            <!--     Sign Up button -->
+                <a class="btn submits log" href="{{ url_for('login') }}">login<i class="fa fa-user-plus" aria-hidden="true"></i></a>
+            <!--         Sign Up font icon -->
+                  
+            <!--      End Other the Division -->
+               </div>
+        </div>
+        <!-- <input type="text" name="username" placeholder="Username" required><br>
+        <input type="text" name="name" placeholder="Name" required><br>
+        <input type="text" name="phone_number" placeholder="Phone Number" required><br>
+        <input type="email" name="email" placeholder="Email" required><br>
+        <input type="password" name="password" placeholder="Password" required><br>
+        <button type="submit">Register</button>
+        
+        <p>already have an account? <a href="{{ url_for('login') }}">login now</a></p> -->
+    </form>
+</div>
+</body>
+</html>
